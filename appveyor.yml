@@ -1,0 +1,11 @@
+image: Visual Studio 2022
+environment:
+  nodejs_version: '18'
+install:
+  - ps: Install-Product node $env:nodejs_version
+  - npm install
+build_script:
+  - npm run build
+deploy_script:
+  - npm install -g gh-pages
+  - gh-pages -d dist

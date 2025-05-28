@@ -1,0 +1,30 @@
+import './style.css';
+import goblin from './goblin.jpg';
+
+const board = document.createElement('div');
+board.className = 'board';
+document.body.appendChild(board);
+
+const cells = [];
+for (let i = 0; i < 16; i++) {
+  const cell = document.createElement('div');
+  cell.className = 'cell';
+  board.appendChild(cell);
+  cells.push(cell);
+}
+
+const img = document.createElement('img');
+img.src = goblin;
+img.className = 'goblin';
+
+let current = Math.floor(Math.random() * 16);
+cells[current].appendChild(img);
+
+setInterval(() => {
+  let next;
+  do {
+    next = Math.floor(Math.random() * 16);
+  } while (next === current);
+  cells[next].appendChild(img); // перемещаем, не удаляя
+  current = next;
+}, 1000);
