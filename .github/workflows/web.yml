@@ -1,0 +1,29 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Клонировать репозиторий
+        uses: actions/checkout@v3
+
+      - name: Установить Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Установить зависимости
+        run: npm install
+
+      - name: Запустить сборку
+        run: npm run build
+
+      - name: Запустить тесты
+        run: npm test
