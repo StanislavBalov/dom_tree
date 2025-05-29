@@ -1,13 +1,7 @@
 # Домашнее задание к занятию "2. DOM"
 
 
-# Goblin Game
-
-![Build status](https://ci.appveyor.com/api/projects/status/github/StanislavBalov/dom_tree?branch=main&svg=true)
-[Демо на GitHub Pages](https://StanislavBalov.github.io/dom_tree/)
-
-Игра: по игровому полю 4x4 бегает гоблин, попробуйте его поймать!
-
+![CI](https://github.com/StanislavBalov/dom_tree/actions/workflows/web.yml/badge.svg)
 
 
 Правила сдачи задания:

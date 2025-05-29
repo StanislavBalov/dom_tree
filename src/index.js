@@ -1,30 +1,40 @@
 import './style.css';
-import goblin from './goblin.jpg';
+import goblin from './goblin.png';
 
-const board = document.createElement('div');
-board.className = 'board';
-document.body.appendChild(board);
+// Эта функция создаёт игровое поле и возвращает элемент board
+export function createBoard() {
+  const board = document.createElement('div');
+  board.className = 'board';
 
-const cells = [];
-for (let i = 0; i < 16; i++) {
-  const cell = document.createElement('div');
-  cell.className = 'cell';
-  board.appendChild(cell);
-  cells.push(cell);
+  for (let i = 0; i < 16; i++) {
+    const cell = document.createElement('div');
+    cell.className = 'cell';
+    board.appendChild(cell);
+  }
+
+  return board;
 }
 
-const img = document.createElement('img');
-img.src = goblin;
-img.className = 'goblin';
+// Используем функцию, если скрипт запущен в браузере напрямую
+if (typeof document !== 'undefined') {
+  const board = createBoard();
+  document.body.appendChild(board);
 
-let current = Math.floor(Math.random() * 16);
-cells[current].appendChild(img);
+  const cells = board.querySelectorAll('.cell');
 
-setInterval(() => {
-  let next;
-  do {
-    next = Math.floor(Math.random() * 16);
-  } while (next === current);
-  cells[next].appendChild(img); // перемещаем, не удаляя
-  current = next;
-}, 1000);
+  const img = document.createElement('img');
+  img.src = goblin;
+  img.className = 'goblin';
+
+  let current = Math.floor(Math.random() * 16);
+  cells[current].appendChild(img);
+
+  setInterval(() => {
+    let next;
+    do {
+      next = Math.floor(Math.random() * 16);
+    } while (next === current);
+    cells[next].appendChild(img);
+    current = next;
+  }, 1000);
+}
